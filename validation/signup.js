@@ -14,17 +14,19 @@ module.exports = ValidateSignUpInput = (data) => {
   }
   if (Validator.isEmpty(email)) {
     errors.email = "email is required";
-  } else if (!Validator.isEmpty(email)) {
+  } else if (!Validator.isEmail(email)) {
     errors.email = "Enter a valid email id";
   }
   if (Validator.isEmpty(password)) {
     errors = "password is required";
-  } else if (!Validator.isLength(password, { min: 5, max: 30 })) {
+  } 
+  else if (!Validator.isLength(password, { min: 5, max: 30 })) {
     errors.password = "passord must be at least 5 character";
   }
 
+  
   return {
     errors,
-    isValid: isEmpty(errors),
+    isValid: isEmpty(errors)
   };
 };

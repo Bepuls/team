@@ -10,13 +10,13 @@ module.exports = validateLoginInput = (data) => {
 
   if (Validator.isEmpty(email)) {
     errors.email = "Email is required";
-  } else if (!Validator.isEmpty(email)) {
+  } else if (!Validator.isEmail(email)) {
     errors.email = "Enter a valid email id";
   }
 
   if (Validator.isEmpty(password)) {
     errors.password = "Password is required";
-  } else if (Validator.isLength(password, { min: 5, max: 30 })) {
+  } else if (!Validator.isLength(password, { min: 5, max: 30 })) {
     errors.password = "Password must be at least 5 characters";
   }
   return {
